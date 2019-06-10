@@ -1,4 +1,4 @@
-#tensorflow-GPU环境的配置
+# tensorflow-GPU环境的配置
 1. 安装nvida显卡驱动
    ```
    sudo apt update
@@ -20,7 +20,7 @@
 6. 验证是否成功`nvcc -V`
 7. 注：中间可能会缺少gcc啊啥的，这就不说了
 
-##一些版本对应关系
+## 一些版本对应关系
 1. CUDA与Driver的对应关系
    ![CUDA与Driver的对应关系](img/3.png)
 2. tensorlfow版本对应关系
@@ -28,7 +28,7 @@
 3. tensorlfow-GPU版本对应关系
    ![tensorlfow-GPU版本对应关系](img/5.png)
 
-##nvidia-docker的安装
+## nvidia-docker的安装
 1. 创建nvdia-docker.sh,写入以下内容（`distribution`按照自己的系统填写），并运行
    ```
    # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
@@ -50,5 +50,5 @@
 2. 运行`docker run --runtime=nvidia --rm nvidia/cuda:10.0-base nvidia-smi`,如下图则成功
    ![nvidia-docker](img/6.png)
 
-##拉取tensorflow镜像
+## 拉取tensorflow镜像
 

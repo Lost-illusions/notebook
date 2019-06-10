@@ -1,6 +1,6 @@
-#docker的使用
+# docker的使用
 
-##安装docker
+## 安装docker
    1. [见此](https://www.jianshu.com/p/e6b6268956ec)
    2. 换源一步使用清华源
         ```
@@ -15,7 +15,7 @@
        6. 验证是否安装成功`sudo docker run hello-world`
 
 
-##nvidia最新驱动的安装(docker)
+## nvidia最新驱动的安装(docker)
 1. 禁用nouveau驱动
    1. `sudo vim /etc/modprobe.d/blacklist.conf`
    2. 添加以下内容（可能有些不是必须的，我没有一个个尝试）
@@ -45,7 +45,7 @@
       2. 32位的库可不安装
 8. 检查是否安装成功`nvidia-smi`
 
-##免sudo使用docker
+## 免sudo使用docker
 1. 如果还没有 docker group 就添加一个：
 `sudo groupadd docker`
 2. 将用户加入该 group 内。然后退出并重新登录就生效了。

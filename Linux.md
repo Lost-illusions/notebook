@@ -1,4 +1,4 @@
-#安装
+# 安装
 
 1. 安装git
    `sudo apt-get install git`
@@ -27,7 +27,7 @@
     sudo apt-get install g++
     ```
 
-#配置
+# 配置
 1. VsCode的C++环境配置
    [见此](https://blog.csdn.net/qq_34347375/article/details/80851417)
 2. PyCharm的PyQt5配置
@@ -48,11 +48,11 @@
          4. Working directory 填写 `$FileDir$`
 
 
-#一些命令
+# 一些命令
 1. 解压
    `
 
-#一些杂乱的问题
+# 一些杂乱的问题
 1. 权限问题
    若无写入文件失败，应修改文件夹/文件权限
 

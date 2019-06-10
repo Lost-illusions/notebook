@@ -1,9 +1,9 @@
-#安装conda
+# 安装conda
 1. 下载<file>.sh文件
 2. `bash <file>.sh`
 3. `source ~/.bashrc`
 
-#使用
+# 使用
 1. 创建虚拟环境
    `conda create -n <name> python=3.7`
 

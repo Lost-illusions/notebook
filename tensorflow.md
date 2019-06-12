@@ -51,4 +51,5 @@
    ![nvidia-docker](img/6.png)
 
 ## 拉取tensorflow镜像
-
+1. `nvidia-docker run -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter`
+2. 映射到了本地的8888端口，浏览器访问`localhost:8888`之后，输入token（在1中命令输出的里面找），即可进入jupyter

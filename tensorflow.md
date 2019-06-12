@@ -53,3 +53,27 @@
 ## 拉取tensorflow镜像
 1. `nvidia-docker run -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter`
 2. 映射到了本地的8888端口，浏览器访问`localhost:8888`之后，输入token（在1中命令输出的里面找），即可进入jupyter
+
+## pycharm的docker配置
+1. docker配置
+   ![docker配置](img/7.png)
+2. python解释器配置，选择对应的镜像
+   ![python解释器的配置](img/8.png)
+3. 为当前项目，选择对应的解释器
+   ![...](img/9.png)
+   ![...](img/10.png)
+4. 修改`/etc/docker/daemon.json`文件，使pycharm使用nvidia-docker来运行tensorlfow镜像，即添加`"default-runtime": "nvidia"`
+   ```
+   {
+    "default-runtime": "nvidia",	
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+   }
+   ```
+5. 重启docker守护进程`sudo pkill -SIGHUP dockerd`
+6. 大功告成
+   

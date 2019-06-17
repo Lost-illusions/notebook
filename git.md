@@ -13,3 +13,7 @@
 3. 关联远程仓库 `git remote add origin git@github.com:Lost-illusions/notebook.git`
 4. （第一次提交时使用）提交本地修改到远程仓库`git push -u origin master`
    1. 此后，提交`git push`即可
+
+## 一些问题
+1. git无法显示中文
+   `git config --global core.quotepath false`

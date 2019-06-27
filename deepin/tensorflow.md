@@ -29,8 +29,7 @@
    ![tensorlfow-GPU版本对应关系](img/5.png)
 
 ## nvidia-docker的安装
-1. 创建 `nvdia-docker.sh`,写入以下内容（`distribution`按照自己的系统填写,终端运行`. /etc/os-release;echo $ID$VERSION_ID`即可查看），并运行.
-   
+1. 创建nvdia-docker.sh,写入以下内容（`distribution`按照自己的系统填写），并运行
    ```
    # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
    docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f

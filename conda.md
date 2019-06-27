@@ -11,10 +11,10 @@
    `conda remove -n <name> --all`
 
 3. 激活虚拟环境
-   `conda active <name>`
+   `conda activate <name>`或者`source activate <name>`
 
 3. 退出虚拟环境
-   ` conda deactivate`
+   ` conda deactivate`或者`source deactivate`
 
 4. 安装包
    `conda install <packgeName>`

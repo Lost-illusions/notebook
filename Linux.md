@@ -46,8 +46,13 @@
          2. Program 是工作环境的python的位置，例：`/home/nathaniel/anaconda3/bin/python`
          3. Arguments 填写`-m PyQt5.uic.pyuic $FileName$ -o $FileNameWithoutExtension$.py `
          4. Working directory 填写 `$FileDir$`
-
-
+3. 终端美化 zsh + oh-my-zsh + 
+   1. 安装anaconda后出现`sh: command not find:conda`问题
+      1. `vim ~/.zshrc`
+      2. 在末尾添加`export PATH=/home/<username>/<anaconda>/bin:$PATH`，例`export PATH=/home/nathaniel/anaconda3/bin:$PATH`
+         1. 其中<username>是自己主目录的名字，即用户名
+         2. <anaconda>是anaconda安装目录的名字，我电脑上就是anaconda3
+      3. 应用配置`source ~/.zshrc`
 # 一些命令
 1. 解压
    `

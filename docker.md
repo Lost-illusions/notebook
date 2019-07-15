@@ -14,11 +14,6 @@
        5. 安装命令为`sudo dpkg -i /path/to/package.deb`
        6. 验证是否安装成功`sudo docker run hello-world`
 
-
-## nvidia最新驱动的安装(docker)
-
-1. 检查是否安装成功`nvidia-smi`
-
 ## 免sudo使用docker
 1. 如果还没有 docker group 就添加一个：
 `sudo groupadd docker`

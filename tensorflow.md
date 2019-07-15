@@ -50,10 +50,19 @@
    ```
 2. 运行`docker run --runtime=nvidia --rm nvidia/cuda:10.0-base nvidia-smi`,如下图则成功
    ![nvidia-docker](img/6.png)
+## 一些使用方法
 
-## 拉取tensorflow镜像
+### 拉取tensorflow镜像
 1. `nvidia-docker run -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter`
 2. 映射到了本地的8888端口，浏览器访问`localhost:8888`之后，输入token（在1中命令输出的里面找），即可进入jupyter
+
+### 挂载本地目录
+1. `nvidia-docker run -it -v /home/nathaniel/code/test:/tf/notebook -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter`
+2. 好像容器目录必须在`/tf`内
+
+### 终端使用docker
+1. `nvidia-docker run -it -v /home/nathaniel/code/test:/tf/notebook -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter bash`
+
 
 ## pycharm的docker配置
 1. docker配置

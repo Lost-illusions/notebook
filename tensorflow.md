@@ -87,3 +87,11 @@
 5. 重启docker守护进程`sudo pkill -SIGHUP dockerd`
 6. 大功告成
    
+## docker下无法使用http代理的问题（这方法有问题）
+1. 问题即在docker的bash中，使用`export http_proxy="http://127.0.0.1:12333" export https_proxy="http://127.0.0.1:12333"`无法走ssr代理
+2. 解决方案
+   1. `sudo vim /etc/default/docker`
+   2. 添加`export http_proxy="http://127.0.0.1:12333" export https_proxy="http://127.0.0.1:12333"`
+   3. 重启docker`sudo service docker restart`
+3. 
+

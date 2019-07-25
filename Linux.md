@@ -26,6 +26,8 @@
     sudo apt-get update
     sudo apt-get install g++
     ```
+5. 安装mongodb
+   1. [见此](https://www.jianshu.com/p/f0952b4118ec)
 
 # 配置
 1. VsCode的C++环境配置
@@ -93,3 +95,6 @@
    1. 输入`exit`，观察显示的英文，是哪个地方出现了error,例如：`/dev/sdc2`
    2. 输入`fsck -y /dev/sdc2`,等待
    3. 输入`exit`，进入桌面系统
+
+5. apt死锁问题
+   1. `sudo rm /var/lib/dpkg/lock`

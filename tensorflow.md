@@ -64,7 +64,7 @@
 1. `nvidia-docker run -it -v /home/nathaniel/code/test:/tf/notebook -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter bash`
 
 
-## pycharm的docker配置
+### pycharm的docker配置
 1. docker配置
    ![docker配置](img/7.png)
 2. python解释器配置，选择对应的镜像
@@ -86,12 +86,32 @@
    ```
 5. 重启docker守护进程`sudo pkill -SIGHUP dockerd`
 6. 大功告成
-   
-## docker下无法使用http代理的问题（这方法有问题）
-1. 问题即在docker的bash中，使用`export http_proxy="http://127.0.0.1:12333" export https_proxy="http://127.0.0.1:12333"`无法走ssr代理
-2. 解决方案
-   1. `sudo vim /etc/default/docker`
-   2. 添加`export http_proxy="http://127.0.0.1:12333" export https_proxy="http://127.0.0.1:12333"`
-   3. 重启docker`sudo service docker restart`
-3. 
 
+## docker中走代理的方式
+1. [原文](https://kebingzao.com/2019/02/22/docker-container-proxy/)
+2. 添加json文件
+   1. `mkdir ~/.docker`
+   2. `sudo vim ~/.docker/config.json`
+   3. 添加一下内容，其中端口按自己宿主机设置的填写
+    ```     
+        {
+            "proxies":
+            {
+                "default":
+                {
+                    "httpProxy": "http://127.0.0.1:8118",
+                    "httpsProxy": "http://127.0.0.1:8118",
+                    "noProxy": "localhost"
+                }
+            }
+        }
+    ```
+3. 发现 8118 端口还是被拒绝了， 有可能是 8118 端口没有映射出去，考虑到 docker 默认的是 bridge 的网络模式，端口是要做转发映射的。所以为了直接用宿主机的 ip 和 端口，我们换成用 host 的网络模式，让它可以跟宿主机共用一个 Network Namespace。
+4. 以host网络模式启动docker
+   1. `--net host`
+   2. `nvidia-docker run -it --net host -v /home/nathaniel/file/NLP/NLP/CS224n-Winter2017/code/:/tf/NLP -p 8888:8888 tensorflow/tensorflow:v2`
+
+   
+### 通过jupyter notebook打开
+1. 因为我通过`nvidia-docker run -it -v /home/nathaniel/code/test:/tf/notebook -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter bash`在终端运行，并配置的环境，故而在保存后再次打开默认是bash环境，此时运行jupyter notebook会出现问题
+2. 解决方法：`jupyter notebook --ip=0.0.0.0 --allow-root`

@@ -98,3 +98,7 @@
 
 5. apt死锁问题
    1. `sudo rm /var/lib/dpkg/lock`
+
+6. 不可以访问exfat格式U盘的问题
+   1. `sudo apt-get install exfat-utils`
+   2. 重启即可，有可能不用重启

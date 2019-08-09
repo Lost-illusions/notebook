@@ -102,3 +102,9 @@
 6. 不可以访问exfat格式U盘的问题
    1. `sudo apt-get install exfat-utils`
    2. 重启即可，有可能不用重启
+
+7. Ubuntu死机的解决方法
+   1. 一般死机都是在tty2，这是`ctrl+alt+F3`切换到tty3
+   2. 输入用户名、密码登录
+   3. 输入`top`命令，找到占用最高的进程（一般都是占用cpu最高的进程导致死机），记住其前面的id
+   4. `kill <id>`

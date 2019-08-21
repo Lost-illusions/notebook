@@ -130,3 +130,22 @@
    2. 输入用户名、密码登录
    3. 输入`top`命令，找到占用最高的进程（一般都是占用cpu最高的进程导致死机），记住其前面的id
    4. `kill <id>`
+
+8. Ubuntu添加应用图标的方法
+   1. 以xMind为例
+   2. `cd /usr/share/applications`
+   3. `sudo vim xmind.desktop`
+   4. 键入以下内容 
+        ``` 
+        [Desktop Entry]
+            Name=XMind8
+            Comment=XMind8
+            Exec=/home/nathaniel/tools/ubuntu/xmind-8-update8-linux/XMind_amd64/./XMind
+            Icon=/home/nathaniel/tools/ubuntu/xmind-8-update8-linux/icon.png
+            Path=/home/nathaniel/tools/ubuntu/xmind-8-update8-linux/XMind_amd64
+            Terminal=false
+            Type=Application
+            StartupNotify=true
+            Categories=Network;Development;
+        ```
+    5. `Exec`是启动文件的路径；`Icon`是图标的路径

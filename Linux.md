@@ -58,6 +58,28 @@
 # 一些命令
 1. 解压
    `
+## grub引导问题捣腾记录
+1. 我在安装Ubuntu时，是安装在一个SSD中的，但是没有boot分区，引导安装在了windows的EFI中。
+2. 如果想要换机，就需要在新的电脑中添加引导文件，故此记录一下如何操作
+   1. 我通过DiskGenie将原电脑EFi分区中的Ubuntu文件夹拷贝至新电脑的EFI中  <br />  ![EFI](img/11.png) ![EFI](img/12.png)
+   2. 通过EasyUEFI软件添加新的引导
+   3. 重启选择Ubuntu启动，这时会进入grub界面
+   4. 按以下命令依次操作
+      1. `ls`   会列出一系列诸如`(hd0), (hd0,msdos1)`之类的磁盘分区，以A代表其中一个。
+      2. `ls A/boot/grub` 按照1步的结果，替换A执行此命令，直到结果中含有`grub.cfg`。 一般来说`ls (hd0, msdos1)/boot/grub`会出现`grub.cfg`
+      3. `set = root=(hd0, msdos1)` 
+      4.  `set  prefix=(hd0, msdos1)/boot/grub`
+      5.  `normal`
+      6.  这时应该就进入了Ubuntu的引导界面
+      7.  进入Ubuntu后，打开终端
+      8. `sudo update-grub`
+      9. `sudo grub-install /dev/sda` 分区为Ubuntu安装的分区，而且只可以不可以指定分区号`/dev/sda1`
+      10. 理论上这样就可以了
+   5.  但是！我的电脑重启后，又进入了grub界面，重新执行第4步后又可以进入Ubuntu系统了。
+   6.  在`EFI/ubuntu`文件夹中，打开`grub.cfg`文件，发现其中有root和prefix变量，故而我猜测每次重启后root和prefix的值都发生了变化，所以需要每次重新设置临时的值。
+   7. 所以我直接**替换了 `grub.cfg`文件中root变量的值为一常量**, 即**将$root替换成(hd0, msdos1)**（因为prefix的值是根据root的值得来的故而不需要修改, 另**这个值要看第3步找到的root的值**），这样就大功告成了！重启后进入了Ubuntu的引导界面。<br /> ![Ubuntu](img/13.png)  ![grub.cfg](img/14.png)  
+3. 直接修改grub的方法，应该可以本机上顺利运行下去，但是换机的话还是要重新更改。
+
 
 # 一些杂乱的问题
 1. 权限问题

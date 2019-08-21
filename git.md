@@ -19,3 +19,14 @@
 ## 一些问题
 1. git无法显示中文
    `git config --global core.quotepath false`
+
+2. 解除单次100M的限制
+   1. 安装git-lfs
+      1. `curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
+      2. `sudo apt-get install git-lfs`
+      3. `git lfs install`
+   2. 追踪大文件**注意文件名要相对路径**
+      1. `git lfs track <文件名>`
+      2. `git add <文件名>`
+      3. `git comiit -m " "`
+      4. `git push`
